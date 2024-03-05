@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}"/>
+{% endblock %}
+
+{% block content %}
+
+<section class="logo-container">
+  <div class="home-container">
+    {% comment %} !Add Logo Below {% endcomment %}
+    <img src="{% static '' %}" alt="The Home Hunter Logo" />
+  </div>
+  <img 
+    src="{% static 'images/logotype.svg' %}" 
+    alt="Text reads: Home Hunter"
+  />
+</section>
+
+{% endblock %}
