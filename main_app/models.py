@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 HOME_TYPES = (
   ('house', 'House'),
@@ -27,4 +28,7 @@ class Home(models.Model):
 
   def __str__(self):
     return self.address
+  
+  def get_absolute_url(self):
+    return reverse('home-detail', kwargs={'home_id': self.id})
   

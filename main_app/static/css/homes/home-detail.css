@@ -1,112 +1,62 @@
+/* Overall container styling */
 .home-container {
-  padding: 35px 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
 }
 
-.home-img {
-  width: 75%;
-  max-width: 350px;
-}
-
-.usr-img {
-  width: 100%;
-  border-radius: var(--card-border-radius);
-}
-
+/* Details styling */
 .home-details {
-  width: 98%;
-}
-
-.home-actions {
-  margin-top: 20px;
-}
-
-.subsection-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.subsection-content {
-  margin: 0 8px;
+  background-color: #f5f5f7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .home-details h1 {
-  font-size: var(--font-xxl);
-  margin: 15px 0 3px;
+  color: #0074e4;
+  /* Zillow blue */
+  margin-bottom: 20px;
 }
 
-.home-details h2 {
-  font-size: var(--font-xl);
-  margin: 0 0 10px;
-  margin-top: 0;
-  margin-bottom: 10px;
+.home-details p,
+.home-details span {
+  color: #666;
+  line-height: 1.6;
 }
 
-.home-details h3 {
-  margin: 20px 0 10px;
-  font-size: var(--font-l);
+.home-details a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #0074e4;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-.home-details p {
-  font-size: var(--font-reg);
-  margin: 5px 0;
+.home-details a:hover {
+  background-color: #0056b3;
 }
 
-
-
-.subsection-title img {
-  height: 42px;
-  margin-left: 8px;
+/* Adjustments for different types (Lot/Land vs. Home) */
+.home-details span {
+  display: block;
+  /* Make 'Listed By' start on new line */
+  margin-top: 10px;
+  font-style: italic;
 }
 
-.subsection-title img:first-of-type {
-  margin-left: 16px;
-}
-
-.subsection-content p,
-.subsection-content input,
-.subsection-content select {
-  font-size: var(--font-l);
-}
-
-.subsection-content input,
-.subsection-content select {
-  margin-left: 5px;
-  padding: 3px;
-}
-
-
-#file-input {
-  overflow: hidden;
-  position: absolute;
-  width: 0.1px;
-  height: 0.1px;
-}
-
-#file-name {
-  margin-bottom: 10px;
-}
-
-@media only screen and (min-width: 768px) {
-  .cat-container {
-    padding: 35px 30px;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 10px;
   }
 
-  .home-img {
-    width: 25%;
-    max-width: 250px;
-    margin-right: 25px;
-  }
-
-@media only screen and (min-width: 1024px) {
-  .feedings-toy-container {
-    padding: 0 40px;
+  .home-details {
+    padding: 15px;
   }
 }
