@@ -6,3 +6,7 @@ def home(request):
 
 def about(request):
   return render(request, 'about.html')
+
+
+def home_index(request):
+  return render(request, 'homes/index.html', { 'homes': homes })

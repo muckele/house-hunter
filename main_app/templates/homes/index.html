@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/homes/home-index.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+  <h1>Home List</h1>
+</section>
+<section class="card container">
+  {% for home in homes %}
+    <div class="card">
+      <div class="card-content">
+        <div class="card-img-container">
+          {% comment %} !Insert picture of home below {% endcomment %}
+          <img 
+            src="{% static '' %}" 
+            alt="A home"
+          >
+        </div>
+        <h2 class="card-title">{{ home.price }}</h2>
+        {% if home.type == "house"%}
+          <p>{{ home.bedrooms}} bds</p>
+          <br>
+          <p>{{ home.bathrooms }} ba</p>
+          <br>
+          <p>{{ home.sqft }} sqft</p>
+          <br>
+          <p>{{ home.type }} for sale</p>
+          <p>{{ home.address }}</p>
+          <span>Home Listed By {{ home.listedby }}</span>
+        {% if home.type == "lot" %}
+          <p>{{ home.lotsize }}</p> 
+          <br>
+          <p>- Lot / Land for sale</p>
+          <p><p>{{ home.address }}</p></p>
+          <span>Home Listed By {{ home.listedby }}</span> 
+      </div>
+    </div>
+  {% endfor %}
+</section>
+
+{% endblock %}
