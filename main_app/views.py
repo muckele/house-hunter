@@ -1,6 +1,7 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Home
+
 
 def home(request):
   return render(request, 'home.html')
@@ -19,3 +20,11 @@ def home_detail(request, home_id):
 class HomeCreate(CreateView):
   model = Home
   fields = '__all__'
+
+class HomeUpdate(UpdateView):
+  model = Home
+  fields = '__all__'
+
+class HomeDelete(DeleteView):
+  model = Home
+  success_url = '/homes/'

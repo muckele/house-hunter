@@ -7,6 +7,7 @@ urlpatterns = [
   path('homes/', views.home_index, name='home-index'),
   path('homes/<int:home_id>', views.home_detail, name='home-detail'),
   path('homes/create/', views.HomeCreate.as_view(), name='home-create'),
-  path('homes/delete/', views.HomeDelete.as_view(), name='home-delete'),
+  path('homes/<int:pk>/update/', views.HomeUpdate.as_view(), name='home-update'),
+  path('homes/<int:pk>/delete/', views.HomeDelete.as_view(), name='home-delete'),
 
 ]

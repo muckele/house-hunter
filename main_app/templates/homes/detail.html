@@ -36,6 +36,10 @@
     <span>Home Listed By {{ home.listed_by }} </span>
     <a href="{{ home.original_url }}">View Original Listing</a>
   </div>
+  <div class="home-actions">
+      <a href="{% url 'home-update' home.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'home-delete' home.id %}" class="btn danger">Delete</a>
+    </div>
 </section>
 
 {% endblock %}
