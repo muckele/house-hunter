@@ -22,6 +22,8 @@ class Home(models.Model):
   tax_year = models.IntegerField()
   listed_by = models.CharField(max_length=255)
   type = models.CharField(max_length=50, choices=HOME_TYPES, default=HOME_TYPES[0][0])
+  property_taxes = models.IntegerField()
+  original_url = models.URLField(max_length=255, verbose_name="Original URL", null=True)
 
   def __str__(self):
     return self.address

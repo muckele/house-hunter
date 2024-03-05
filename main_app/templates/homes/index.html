@@ -16,28 +16,30 @@
 <section class="card container">
   {% for home in homes %}
     <div class="card">
-      <div class="card-content">
-        {% comment %} <div class="card-img-container"> {% endcomment %}
-          {% comment %} !Insert picture of home below {% endcomment %}
-          {% comment %} <img 
-            src="{% static '' %}" 
-            alt="A home"
-          >
-        </div> {% endcomment %}
-        <h2 class="card-title">{{ home.price }}</h2>
-        {% if home.type == 'lot' %}
-          <p>{{ home.lotsize }} acres</p> 
-          <p>- Lot / Land for sale</p>
-          <span>Home Listed By {{ home.listed_by }}</span>
-        {% else %}
-          <p> {{ home.bedrooms }} bds</p>
-          <p> {{ home.bathrooms }} ba</p>
-          <p> {{ home.sqft }} sqft</p>
-          <p> {{ home.type }} for sale</p>
-        {% endif %}
-        <p> {{ home.address }} </p>
-        <span>Home Listed By {{ home.listed_by }} </span>
-      </div>
+      <a href="{% url 'home-detail' home.id %}">
+        <div class="card-content">
+          {% comment %} <div class="card-img-container"> {% endcomment %}
+            {% comment %} !Insert picture of home below {% endcomment %}
+            {% comment %} <img 
+              src="{% static '' %}" 
+              alt="A home"
+            >
+          </div> {% endcomment %}
+          <h2 class="card-title">{{ home.price }}</h2>
+          {% if home.type == 'lot' %}
+            <p>{{ home.lotsize }} acres</p> 
+            <p>- Lot / Land for sale</p>
+            <span>Home Listed By {{ home.listed_by }}</span>
+          {% else %}
+            <p> {{ home.bedrooms }} bds</p>
+            <p> {{ home.bathrooms }} ba</p>
+            <p> {{ home.sqft }} sqft</p>
+            <p> {{ home.type }} for sale</p>
+          {% endif %}
+          <p> {{ home.address }} </p>
+          <span>Home Listed By {{ home.listed_by }} </span>
+        </div>
+      </a>
     </div>
   {% endfor %}
 </section>
