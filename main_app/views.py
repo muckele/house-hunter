@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.views import LoginView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Home
+from .models import House
 
 
 class Home(LoginView):
@@ -15,17 +15,17 @@ def about(request):
   return render(request, 'about.html')
 
 @login_required
-def home_index(request):
-  homes = Home.objects.all()
-  return render(request, 'homes/index.html', { 'homes': homes })
+def house_index(request):
+  houses = House.objects.all()
+  return render(request, 'houses/index.html', { 'houses': houses })
 
 @login_required
-def home_detail(request, home_id):
-  home = Home.objects.get(id=home_id)
-  return render(request, 'homes/detail.html', { 'home': home })
+def house_detail(request, house_id):
+  house = House.objects.get(id=house_id)
+  return render(request, 'houses/detail.html', { 'house': house })
 
-class HomeCreate(LoginRequiredMixin, CreateView):
-  model = Home
+class HouseCreate(LoginRequiredMixin, CreateView):
+  model = House
   fields = '__all__'
 
   def form_valid(self, form):
@@ -33,13 +33,13 @@ class HomeCreate(LoginRequiredMixin, CreateView):
     return super().form_valid(form)  
 
 
-class HomeUpdate(LoginRequiredMixin, UpdateView):
-  model = Home
+class HouseUpdate(LoginRequiredMixin, UpdateView):
+  model = House
   fields = '__all__'
 
-class HomeDelete(LoginRequiredMixin, DeleteView):
-  model = Home
-  success_url = '/homes/'
+class HouseDelete(LoginRequiredMixin, DeleteView):
+  model = House
+  success_url = '/houses/'
 
 def signup(request):
   error_message = ''

@@ -29,8 +29,8 @@
       <ul>
         {% if user.is_authenticated %}
           <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'home-index' %}">All Homes</a></li>
-          <li><a href="{% url 'home-create' %}">Add a Home</a></li>
+          <li><a href="{% url 'house-index' %}">All Houses</a></li>
+          <li><a href="{% url 'house-create' %}">Add a House</a></li>
           <li><a href="{% url 'logout' %}">Log out</a></li>
         {% else %}
           <li><a href="{% url 'about' %}">About</a></li>

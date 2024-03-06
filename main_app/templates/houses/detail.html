@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link 
+  rel="stylesheet" 
+  type="text/css" 
+  href="{% static 'css/houses/house-detail.css' %}"
+/>
+{% endblock %}
+
+{% block content %}
+
+<section class="house-container">
+  {% comment %} !<div class="house-img">
+    <img 
+      src="{% static '' %}" 
+      alt="A house"
+    >
+  </div> {% endcomment %}
+  <div class='house-details'>
+    <h1> ${{ house.price }} </h1>
+    <p> {{ house.address }} </p>
+    {% if house.type == 'lot' %}
+      <p>{{ house.lotsize }} acres</p> 
+      <p>- Lot / Land for sale</p>
+      <span>House Listed By {{ house.listed_by }}</span>
+    {% else %}
+      <p> {{ house.bedrooms }} bds</p>
+      <p> {{ house.bathrooms }} ba</p>
+      <p> {{ house.sqft }} sqft</p>
+      <p> {{ house.type }} for sale</p>
+    {% endif %}
+    <p>{{ house.description }}</p>
+    <p>This house tax assessment was ${{ house.tax_assessment }} in {{ house.tax_year }} and paid ${{ property_taxes }} in property taxes</p>
+    <span>House Listed By {{ house.listed_by }} </span>
+    <a href="{{ house.original_url }}">View Original Listing</a>
+  </div>
+  <div class="house-actions">
+      <a href="{% url 'house-update' house.id %}" class="btn warn">Edit</a>
+      <a href="{% url 'house-delete' house.id %}" class="btn danger">Delete</a>
+  </div>
+</section>
+
+{% endblock %}

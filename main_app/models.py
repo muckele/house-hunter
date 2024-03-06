@@ -2,7 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
-HOME_TYPES = (
+HOUSE_TYPES = (
   ('house', 'House'),
   ('lot', 'Lot'),
   ('multifamily', 'Multi-family'),
@@ -12,7 +12,7 @@ HOME_TYPES = (
 
 
 # Create your models here.
-class Home(models.Model):
+class House(models.Model):
   price = models.IntegerField()
   address = models.CharField(max_length=255)
   bedrooms = models.IntegerField()
@@ -23,7 +23,7 @@ class Home(models.Model):
   tax_assessment = models.IntegerField()
   tax_year = models.IntegerField()
   listed_by = models.CharField(max_length=255)
-  type = models.CharField(max_length=50, choices=HOME_TYPES, default=HOME_TYPES[0][0])
+  type = models.CharField(max_length=50, choices=HOUSE_TYPES, default=HOUSE_TYPES[0][0])
   property_taxes = models.IntegerField()
   original_url = models.URLField(max_length=255, verbose_name="Original URL", null=True)
   user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -32,5 +32,5 @@ class Home(models.Model):
     return self.address
   
   def get_absolute_url(self):
-    return reverse('home-detail', kwargs={'home_id': self.id})
+    return reverse('house-detail', kwargs={'house_id': self.id})
   
