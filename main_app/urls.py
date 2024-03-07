@@ -10,5 +10,6 @@ urlpatterns = [
   path('houses/<int:pk>/update/', views.HouseUpdate.as_view(), name='house-update'),
   path('houses/<int:pk>/delete/', views.HouseDelete.as_view(), name='house-delete'),
   path('accounts/signup/', views.signup, name='signup'),
+  path('houses/<int:house_id>/add-photo/', views.add_photo, name='add-photo'),
 
 ]
