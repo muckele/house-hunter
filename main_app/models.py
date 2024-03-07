@@ -34,3 +34,10 @@ class House(models.Model):
   def get_absolute_url(self):
     return reverse('house-detail', kwargs={'house_id': self.id})
   
+class Photo(models.Model):
+  url = models.CharField(max_length=250)
+  house = models.OneToOneField(House, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return f"Photo for house_id: {self.house_id} @{self.url}"
+  
