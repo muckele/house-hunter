@@ -1,5 +1,7 @@
 # House Hunter 
-## Share Journey, Share Fun
+## Let's find your new home! 🏠
+
+[Let's go house hunting!](https://house-hunter.fly.dev/)
 
 ![Alt Text](./main_app/static/images/4.png)
 
