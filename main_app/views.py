@@ -8,6 +8,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import House, Photo
 import uuid
 import boto3
+S3_BASE_URL = 'https://s3.us-east-2.amazonaws.com/'
+BUCKET = 'muckele-house-hunter'
 
 
 class Home(LoginView):
@@ -28,7 +30,10 @@ def house_detail(request, house_id):
 
 class HouseCreate(LoginRequiredMixin, CreateView):
   model = House
-  fields = '__all__'
+  fields = ['price', 'address', 'bedrooms', 'bathrooms', 'sqft', 'description', 'lotsize', 'tax_assessment', 'tax_year', 'listed_by', 'type', 'property_taxes', 'original_url']
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
 
   def form_valid(self, form):
     form.instance.user = self.request.user
@@ -37,7 +42,7 @@ class HouseCreate(LoginRequiredMixin, CreateView):
 
 class HouseUpdate(LoginRequiredMixin, UpdateView):
   model = House
-  fields = '__all__'
+  fields = ['price', 'address', 'bedrooms', 'bathrooms', 'sqft', 'description', 'lotsize', 'tax_assessment', 'tax_year', 'listed_by', 'type', 'property_taxes', 'original_url']
 
 class HouseDelete(LoginRequiredMixin, DeleteView):
   model = House
@@ -50,9 +55,26 @@ def signup(request):
     if form.is_valid():
       user = form.save()
       login(request, user)
-      return redirect('cat-index')
+      return redirect('house-index')
     else:
       error_message = 'Invalid sign up - try again'
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'signup.html', context)
+
+def add_photo(request, house_id):
+  photo_file = request.FILES.get('photo-file', None)
+  if photo_file:
+    s3 = boto3.client('s3')
+    key = uuid.uuid4().hex + photo_file.name[photo_file.name.rfind('.'):]
+    try:
+      s3.upload_fileobj(photo_file, BUCKET, key)
+      url = f"{S3_BASE_URL}{BUCKET}/{key}"
+      photo = Photo(url=url, house_id=house_id)
+      house_photo = Photo.objects.filter(house_id=house_id)
+      if house_photo.first():
+        house_photo.first().delete()
+      photo.save()
+    except Exception as err:
+      print('An error occurred uploading file to S3: %s' % err)
+  return redirect('house-detail', house_id=house_id)

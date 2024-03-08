@@ -7,7 +7,7 @@ HOUSE_TYPES = (
   ('lot', 'Lot'),
   ('multifamily', 'Multi-family'),
   ('condo', 'Condominium'),
-  ('townhomes', 'Townhomes'),
+  ('townhome', 'Townhome'),
 )
 
 

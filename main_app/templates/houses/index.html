@@ -7,6 +7,7 @@
   type="text/css"
   href="{% static 'css/houses/house-index.css' %}"
 />
+<script defer src="{% static 'js/house-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -18,13 +19,19 @@
     <div class="card">
       <a href="{% url 'house-detail' house.id %}">
         <div class="card-content">
-          {% comment %} <div class="card-img-container"> {% endcomment %}
-            {% comment %} !Insert picture of house below {% endcomment %}
-            {% comment %} <img 
-              src="{% static '' %}" 
-              alt="A house"
-            >
-          </div> {% endcomment %}
+            {% if house.photo.url %}
+              <img 
+                src="{{house.photo.url}}" 
+                alt="A photo of {{house.address}}"
+                class="usr-img"
+              >
+            {% else %}
+              <img 
+                src="{% static '' %}" 
+                alt="A home"
+              >
+            {% endif %}
+          </div>
           <h2 class="card-title">{{ house.price }}</h2>
           {% if house.type == 'lot' %}
             <p>{{ house.lotsize }} acres</p> 

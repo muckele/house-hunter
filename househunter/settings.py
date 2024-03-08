@@ -127,7 +127,7 @@ STATIC_URL = 'static/'
 
 LOGIN_URL = 'home'
 
-LOGIN_REDIRECT_URL = 'home-index'
+LOGIN_REDIRECT_URL = 'house-index'
 
 LOGOUT_REDIRECT_URL = 'home'
 

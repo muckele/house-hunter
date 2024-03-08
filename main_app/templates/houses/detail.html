@@ -7,31 +7,43 @@
   type="text/css" 
   href="{% static 'css/houses/house-detail.css' %}"
 />
+<script defer src="{% static 'js/house-detail.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 
 <section class="house-container">
-  {% comment %} !<div class="house-img">
-    <img 
-      src="{% static '' %}" 
-      alt="A house"
-    >
-  </div> {% endcomment %}
+<div class="house-img">
+    {% if house.photo.url %}
+      <img 
+        src="{{house.photo.url}}" 
+        alt="A photo of {{house.type}}"
+        class="usr-img"
+      >
+    {% else %}
+      <img 
+        {% comment %} src="{% static '!' %}"  LOGO for my APP{% endcomment %}
+        alt="A house"
+      >
+    {% endif %}
+  </div>
   <div class='house-details'>
     <h1> ${{ house.price }} </h1>
-    <p> {{ house.address }} </p>
+    <h2> {{ house.address }} </h2>
     {% if house.type == 'lot' %}
       <p>{{ house.lotsize }} acres</p> 
       <p>- Lot / Land for sale</p>
       <span>House Listed By {{ house.listed_by }}</span>
     {% else %}
-      <p> {{ house.bedrooms }} bds</p>
-      <p> {{ house.bathrooms }} ba</p>
-      <p> {{ house.sqft }} sqft</p>
-      <p> {{ house.type }} for sale</p>
+      <div class='house-details'>
+        <span class="detail-info"> {{ house.bedrooms }} bedrooms</span>
+        <span class="detail-info"> {{ house.bathrooms }} bathrooms</span>
+        <span class="detail-info"> {{ house.sqft }} sqft</span>
+        <span class="detail-info"> {{ house.type }} for sale</span>
+      </div>
     {% endif %}
-    <p>{{ house.description }}</p>
+    <p class="detail-info">{{ house.description }}</p>
+    <h3>Tax Information:</h3>
     <p>This house tax assessment was ${{ house.tax_assessment }} in {{ house.tax_year }} and paid ${{ property_taxes }} in property taxes</p>
     <span>House Listed By {{ house.listed_by }} </span>
     <a href="{{ house.original_url }}">View Original Listing</a>
@@ -40,6 +52,20 @@
       <a href="{% url 'house-update' house.id %}" class="btn warn">Edit</a>
       <a href="{% url 'house-delete' house.id %}" class="btn danger">Delete</a>
   </div>
+  <h3>Change {{ house.address }}'s photo</h3>
+    <p id="file-name"></p>
+    <form 
+      action="{% url 'add-photo' house.id %}"
+      enctype="multipart/form-data"
+      method="POST"
+    >
+      {% csrf_token %}
+      <label class="btn secondary">
+        Choose photo
+        <input type="file" name="photo-file" id="file-input">
+      </label>
+      <button type="submit" class="btn submit">Upload Photo</button>
+    </form>
 </section>
 
 {% endblock %}
