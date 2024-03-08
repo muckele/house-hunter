@@ -1,60 +1,87 @@
-/* Style for the page header */
-.page-header {
-  text-align: center;
-  padding: 20px 0;
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
   background-color: #f0f0f0;
-  margin-bottom: 20px;
 }
 
-/* Grid container for house cards */
-.card.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  /* Create a responsive grid */
-  gap: 20px;
-  /* Space between cards */
-  padding: 20px;
-  margin: auto;
-  max-width: 1200px;
-  /* Maximum width of the grid */
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 100px;
 }
 
-/* Style for individual cards */
+/* Card styles */
 .card {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+  margin: 20px;
+}
+
+a.card{
+  width: 75%;
+  align-items: center;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 .card-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   padding: 15px;
 }
 
-.card-content img {
-  width: 100%;
+.info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+}
+
+span.home-details{
+  display: inline-block;
+  vertical-align: top;
+  font-size: 15px;
+}
+
+.usr-img {
+  margin: auto;
+  display: block;
+}
+
+.card-content h2{
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.card-content p{
+  color: #666;
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+img.usr-img{
+  width: 25%;
   height: auto;
-  margin-bottom: 15px;
-  border-radius: 5px;
-}
-
-.card-title {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Additional styles for house details */
-.card p,
-.card span {
-  margin-bottom: 5px;
-  line-height: 1.4;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .card.container {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
 }

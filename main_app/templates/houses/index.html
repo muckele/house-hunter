@@ -14,36 +14,37 @@
 <section class="page-header">
   <h1>House List</h1>
 </section>
-<section class="card container">
+<section class="card">
   {% for house in houses %}
-    <div class="card">
-      <a href="{% url 'house-detail' house.id %}">
+    <div class="card-container">
+      <a class="card" href="{% url 'house-detail' house.id %}">
         <div class="card-content">
-            {% if house.photo.url %}
-              <img 
-                src="{{house.photo.url}}" 
-                alt="A photo of {{house.address}}"
-                class="usr-img"
-              >
-            {% else %}
-              <img 
-                src="{% static '' %}" 
-                alt="A home"
-              >
-            {% endif %}
-          </div>
-          <h2 class="card-title">{{ house.price }}</h2>
+          {% if house.photo.url %}
+            <img 
+              src="{{house.photo.url}}" 
+              alt="A photo of {{house.address}}"
+              class="usr-img"
+            >
+          {% else %}
+            <img 
+              src="{% static '' %}" 
+              alt="A home"
+            >
+          {% endif %}
+        </div>
+        <div class="info">
+          <h2 class="card-title">${{ house.price }}</h2>
+          <h2> {{ house.address }} </h2>
           {% if house.type == 'lot' %}
             <p>{{ house.lotsize }} acres</p> 
             <p>- Lot / Land for sale</p>
             <span>House Listed By {{ house.listed_by }}</span>
           {% else %}
-            <p> {{ house.bedrooms }} bds</p>
-            <p> {{ house.bathrooms }} ba</p>
-            <p> {{ house.sqft }} sqft</p>
-            <p> {{ house.type }} for sale</p>
+            <span class="home-details"> {{ house.bedrooms }} bds</span>
+            <span class="home-details"> {{ house.bathrooms }} ba</span>
+            <span class="home-details"> {{ house.sqft }} sqft</span>
+            <p class="home-details"> {{ house.type }} for sale</p>
           {% endif %}
-          <p> {{ house.address }} </p>
           <span>House Listed By {{ house.listed_by }} </span>
         </div>
       </a>

@@ -8,6 +8,9 @@
   href="{% static 'css/houses/house-detail.css' %}"
 />
 <script defer src="{% static 'js/house-detail.js' %}"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Ojuju:wght@200..800&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap')
+</style>
 {% endblock %}
 
 {% block content %}
@@ -28,8 +31,8 @@
     {% endif %}
   </div>
   <div class='house-details'>
-    <h1> ${{ house.price }} </h1>
-    <h2> {{ house.address }} </h2>
+    <h1 class="price-detail"> ${{ house.price }} </h1>
+    <h2 class="address"> {{ house.address }} </h2>
     {% if house.type == 'lot' %}
       <p>{{ house.lotsize }} acres</p> 
       <p>- Lot / Land for sale</p>
@@ -42,10 +45,14 @@
         <span class="detail-info"> {{ house.type }} for sale</span>
       </div>
     {% endif %}
-    <p class="detail-info">{{ house.description }}</p>
-    <h3>Tax Information:</h3>
-    <p>This house tax assessment was ${{ house.tax_assessment }} in {{ house.tax_year }} and paid ${{ property_taxes }} in property taxes</p>
-    <span>House Listed By {{ house.listed_by }} </span>
+    <hr/>
+    <h2>What's Special</h2>
+    <p class="description-info">{{ house.description }}</p>
+    <hr/>
+    <h2>Tax Information</h2>
+    <p class="taxes">This home's tax assessment was ${{ house.tax_assessment }} in {{ house.tax_year }} and paid ${{ house.property_taxes }} in property taxes</p>
+    <hr/>
+    <span class="listed-by">House Listed By {{ house.listed_by }} </span>
     <a href="{{ house.original_url }}">View Original Listing</a>
   </div>
   <div class="house-actions">
