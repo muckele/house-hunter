@@ -40,9 +40,11 @@
             <p>- Lot / Land for sale</p>
             <span>House Listed By {{ house.listed_by }}</span>
           {% else %}
-            <span class="home-details"> {{ house.bedrooms }} bds</span>
-            <span class="home-details"> {{ house.bathrooms }} ba</span>
-            <span class="home-details"> {{ house.sqft }} sqft</span>
+            <div class="details-row">
+              <span class="home-details"> {{ house.bedrooms }} bds</span>
+              <span class="home-details"> {{ house.bathrooms }} ba</span>
+              <span class="home-details"> {{ house.sqft }} sqft</span>
+            </div>
           {% endif %}
           <span>House Listed By {{ house.listed_by }} </span>
         </div>

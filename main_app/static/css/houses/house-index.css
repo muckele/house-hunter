@@ -88,3 +88,20 @@ img.usr-img{
   height: auto;
 }
 
+.details-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.home-details:not(:last-child) {
+  border-right: 2px solid #ccc;
+  /* Visible line between spans */
+  padding-right: 15px;
+  /* Space before the line */
+  margin-right: 15px;
+  /* Space after the line */
+}
+
+
+
