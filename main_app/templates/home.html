@@ -9,13 +9,8 @@
 
 <section class="logo-container">
   <div class="house-container">
-    {% comment %} !Add Logo Below {% endcomment %}
-    <img src="{% static '' %}" alt="The House Hunter Logo" />
+    <img src="{% static 'images/3.png' %}" alt="The House Hunter Logo" />
   </div>
-  <img 
-    src="{% static 'images/logotype.svg' %}" 
-    alt="Text reads: House Hunter"
-  />
 </section>
 
 {% if not user.is_authenticated %}
