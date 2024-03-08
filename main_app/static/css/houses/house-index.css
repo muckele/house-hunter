@@ -15,6 +15,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   margin-top: 100px;
+  margin: 20px auto;
 }
 
 /* Card styles */
@@ -24,7 +25,7 @@ body {
   border-radius: 8px;
   overflow: hidden;
   transition: transform 0.2s ease-in-out;
-  margin: 20px;
+  margin: 20px auto;
 }
 
 a.card{
@@ -103,5 +104,15 @@ img.usr-img{
   /* Space after the line */
 }
 
+.card-content h2 {
+  margin-bottom: -50px;
+  /* Adjust as needed */
+}
+
+/* Change the font-weight of the h3 tag to normal */
+.card-content h3 {
+  font-weight: lighter;
+  white-space: normal;
+}
 
 

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% load static %}
 
 {% block head %}
@@ -31,7 +32,7 @@
     {% endif %}
   </div>
   <div class='house-details'>
-    <h1 class="price-detail"> ${{ house.price }} </h1>
+    <h1 class="price-detail"> ${{ house.price|intcomma  }} </h1>
     <h2 class="address"> {{ house.address }} </h2>
     {% if house.type == 'lot' %}
       <p>{{ house.lotsize }} acres</p> 
@@ -41,7 +42,7 @@
       <div class='house-details'>
         <span class="detail-info"> {{ house.bedrooms }} bedrooms</span>
         <span class="detail-info"> {{ house.bathrooms }} bathrooms</span>
-        <span class="detail-info"> {{ house.sqft }} sqft</span>
+        <span class="detail-info"> {{ house.sqft|intcomma  }} sqft</span>
         <span class="detail-info"> {{ house.type }} for sale</span>
       </div>
     {% endif %}
@@ -50,7 +51,7 @@
     <p class="description-info">{{ house.description }}</p>
     <hr/>
     <h2>Tax Information</h2>
-    <p class="taxes">This home's tax assessment was ${{ house.tax_assessment }} in {{ house.tax_year }} and paid ${{ house.property_taxes }} in property taxes</p>
+    <p class="taxes">This home's tax assessment was ${{ house.tax_assessment|intcomma  }} in {{ house.tax_year }} and paid ${{ house.property_taxes|intcomma  }} in property taxes</p>
     <hr/>
     <span class="listed-by">House Listed By {{ house.listed_by }} </span>
     <a href="{{ house.original_url }}">View Original Listing</a>

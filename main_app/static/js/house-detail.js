@@ -9,3 +9,6 @@ fileInput.addEventListener('change', evt => {
     fileName.innerText = ""
   }
 })
+
+let price = house.price
+let formattedPrice = price.toLocaleString()
