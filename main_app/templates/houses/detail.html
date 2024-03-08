@@ -53,7 +53,7 @@
     <h2>Tax Information</h2>
     <p class="taxes">This home's tax assessment was ${{ house.tax_assessment|intcomma  }} in {{ house.tax_year }} and paid ${{ house.property_taxes|intcomma  }} in property taxes</p>
     <hr/>
-    <span class="listed-by">House Listed By {{ house.listed_by }} </span>
+    <p class="listed-by">House Listed By {{ house.listed_by }} </p>
     <a href="{{ house.original_url }}">View Original Listing</a>
   </div>
   <div class="house-actions">
