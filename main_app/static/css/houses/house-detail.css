@@ -173,3 +173,9 @@ section.house-container{
     padding: 10px;
   }
 }
+
+.house-details .detail-info:not(:last-child) {
+  border-right: 2px solid #ccc;
+  padding-right: 15px;
+  margin-right: 15px;
+}
